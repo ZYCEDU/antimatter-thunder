@@ -41,6 +41,8 @@ cannon.requirements = [new ItemStack(Items.copper, 1000), new ItemStack(Items.le
 cannon.alwaysUnlocked = true;
 cannon.health = 3000;
 cannon.size = 2;
+cannon.buildTime = 60; // 60 ticks = 1 second of base construction time.
+cannon.buildCostMultiplier = 1;
 cannon.range = range;
 cannon.trackingRange = range;
 cannon.reload = shotInterval;
