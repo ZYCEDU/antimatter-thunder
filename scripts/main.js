@@ -1,5 +1,5 @@
 // Mindustry v160.5. A line-piercing power turret with optional liquid ammunition modifiers.
-const range = 200 * Vars.tilesize;
+const range = 70 * Vars.tilesize;
 const shotInterval = 60;
 const waterPerShot = 4;
 const cryofluidPerShot = 3;
@@ -16,7 +16,7 @@ function makeBeam(damage, reloadMultiplier, outer, core, width){
     beam.pierceDamageFactor = 0;
     beam.laserAbsorb = false;
     beam.absorbable = false;
-    beam.buildingDamageMultiplier = 1;
+    beam.buildingDamageMultiplier = 0.5;
     beam.collidesAir = true;
     beam.collidesGround = true;
     beam.collidesTiles = true;
@@ -26,22 +26,22 @@ function makeBeam(damage, reloadMultiplier, outer, core, width){
     return beam;
 }
 
-const dryBeam = makeBeam(1000, 1, "7948fa66", "c29dff", 15);
-const waterBeam = makeBeam(2000, 1.5, "4375ff66", "72d6ff", 18);
-const cryoBeam = makeBeam(3000, 2, "29e4d866", "8cfff5", 21);
+const dryBeam = makeBeam(100, 1, "7948fa66", "c29dff", 15);
+const waterBeam = makeBeam(200, 1.5, "4375ff66", "72d6ff", 18);
+const cryoBeam = makeBeam(300, 2, "29e4d866", "8cfff5", 21);
 
 const cannon = new PowerTurret("antimatter-thunder");
 cannon.localizedName = "反物质雷光炮塔";
-cannon.description = "消耗1电力/秒，向200格内的敌人发射贯穿整条路径的雷光。无需弹药；供水或冷却液可提升单发伤害与开火频率。";
-cannon.details = "无液体：1000伤害/发，每秒1发。水：2000伤害/发，每秒1.5发，消耗4水/发。冷却液：3000伤害/发，每秒2发，消耗3冷却液/发。充足供电下，对路径上每个命中的目标，理论伤害分别为1000、3000、6000/秒。两种液体强化不叠加，优先使用冷却液。";
+cannon.description = "消耗1电力/秒，向70格内的敌人发射穿透雷光，对建筑只造成一半伤害。无需弹药；供水或冷却液可提升单发伤害与开火频率。";
+cannon.details = "无液体：100伤害/发，每秒1发。水：200伤害/发，每秒1.5发，消耗4水/发。冷却液：300伤害/发，每秒2发，消耗3冷却液/发。满电连续命中时，对单位理论伤害为100、300、600/秒，对建筑为50、150、300/秒。两种液体强化不叠加，优先使用冷却液。";
 cannon.category = Category.turret;
 cannon.buildVisibility = BuildVisibility.shown;
-cannon.requirements = [new ItemStack(Items.copper, 1000), new ItemStack(Items.lead, 1000),
-    new ItemStack(Items.titanium, 1000), new ItemStack(Items.thorium, 1000)];
+cannon.requirements = [new ItemStack(Items.copper, 400), new ItemStack(Items.lead, 400),
+    new ItemStack(Items.titanium, 400), new ItemStack(Items.thorium, 400)];
 cannon.alwaysUnlocked = true;
 cannon.health = 3000;
 cannon.size = 2;
-cannon.buildTime = 60; // 60 ticks = 1 second of base construction time.
+cannon.buildTime = 300; // 300 ticks = 5 seconds of base construction time.
 cannon.buildCostMultiplier = 1;
 cannon.range = range;
 cannon.trackingRange = range;

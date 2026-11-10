@@ -2,8 +2,8 @@
   "name": "antimatter-thunder",
   "displayName": "反物质雷光炮塔",
   "author": "ZYCEDU",
-  "description": "200格射程的穿透脉冲炮，低功耗，支持水与冷却液强化。",
-  "version": "1.0.1",
+  "description": "70格射程的穿透脉冲炮，对建筑伤害减半，支持水与冷却液强化。",
+  "version": "1.0.2",
   "minGameVersion": "160",
   "hidden": false
 }
